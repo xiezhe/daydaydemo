@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function createPerson(name){
+			var obj = new Object();
+			obj.name = name;
+			obj.showName = function(){
+				alert(this.name);
+			};
+			return obj;
+		}
+		var p1 = createPerson("小A");
+		var p2 = createPerson("小B");
+		p1.showName();
+		p2.showName();
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
