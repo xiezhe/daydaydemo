@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style type="text/css">
+		#div1 div,#div2 div{border: 1px solid #f00;width: 300px;height: 300px;display:none;}
+		.active{background: #0f0;}
+	</style>
+	<script type="text/javascript">
+	window.onload = function(){
+		var t1 = new Tab('div1');
+		t1.init();
+		var t2 = new Tab('div2');
+		t2.init();
+		t2.autoPlay();
+	}
+	function Tab(id){
+		this.div1 = document.getElementById(id);
+		this.oInp = this.div1.getElementsByTagName('input');
+		this.aDiv = this.div1.getElementsByTagName('div');
+		this.iNow = 0;
+	}
+	Tab.prototype.init = function () {
+		var This = this;
+		for(var i=0;i<this.oInp.length;i++){
+			this.oInp[i].index = i;
+			this.oInp[i].onclick = function(){
+				This.change(this);
+			};
+		}
+	}
+	Tab.prototype.change = function(obj){
+		for(var i=0;i<this.oInp.length;i++){
+			this.oInp[i].className="";
+			this.aDiv[i].style.display="none";
+		}
+		obj.className ="active";
+		this.aDiv[obj.index].style.display = "block";
+	}
+	Tab.prototype.autoPlay = function () {
+		var This = this;
+		setInterval(function(){
+			if(This.iNow==This.oInp.length-1){
+				This.iNow = 0;
+			}else{
+				This.iNow++;
+			};
+			for(var i=0;i<This.oInp.length;i++){
+				This.oInp[i].className="";
+				This.aDiv[i].style.display="none";
+			}
+			This.oInp[This.iNow].className ="active";
+			This.aDiv[This.iNow].style.display = "block";
+		},300)
+	}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<input type="button" class="active" value="选项卡一">
+		<input type="button" value="选项卡二">
+		<input type="button" value="选项卡三">
+		<input type="button" value="选项卡四">
+		<div style="display: block;">000001</div>
+		<div>000002</div>
+		<div>000003</div>
+		<div>000004</div>
+	</div>
+	<div id="div2">
+		<input type="button" class="active" value="选项卡一">
+		<input type="button" value="选项卡二">
+		<input type="button" value="选项卡三">
+		<input type="button" value="选项卡四">
+		<div style="display: block;">000001</div>
+		<div>000002</div>
+		<div>000003</div>
+		<div>000004</div>
+	</div>
+</body>
+</html>
