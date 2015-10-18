@@ -12,10 +12,15 @@
 			};
 			return obj;
 		}
+		var a = [1,2,3];
+		var b = a;
+		alert(a == b)//true;
 		var p1 = createPerson("小A");
 		var p2 = createPerson("小B");
 		p1.showName();
 		p2.showName();
+		alert(p1.showName == p2.showName)//false
+		//这样明显是不行的，每调用一次都会有一个新的showName生成，浪费内存，让showName方法只存在一份
 	</script>
 </head>
 <body>
