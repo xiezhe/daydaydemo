@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this</title>
+	<script type="text/javascript">
+		/*
+		* 4: 函数通过 call apply调用时
+		  语法格式：函数.call(对象，参数1，参数2……)；
+		*/
+		function t(num){
+			alert('我的年龄是'+this.age)
+			alert("但是虚岁是"+(this.age+num))
+		}
+		var human = {name:'lisi',age:'28'}
+		human.t = t;
+		human.t(-10);//达到了this指向human 但human多了一个方法
+		//接下来，我们不把tf赋为huaman的属性，也能把this指向human
+		var wangwu = {name:'wangwu',age:30};
+		t.call(wangwu,5);
+		//call的妙用
+		//解释：函数.call(对象，参数1，参数2……)
+		//运行如下
+		/*
+		a) fn函数中的this指向对象obj
+		b)运行fn(参数1,参数2……)
+		*/
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
