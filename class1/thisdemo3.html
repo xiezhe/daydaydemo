@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this</title>
+	<script type="text/javascript">
+		/*
+		* 3.函数作为构造函数调用时
+		* js中没有类的概念，创建对象是用构造函数来完成，或者直接用json来写对象
+		new Dog发生了以下几个步骤
+		a:系统创建空对象{}，(空对象的construcor属性指向Dog函数)
+		b:把函数的this指向改空对象
+		c:执行该函数
+		d:返回该对象
+		*/
+		function Dog(name,age){
+			this.name = name;
+			this.age = age;
+			this.bark = function(){
+				alert('i am'+this.name+'!')
+			}
+		}
+		var xiezhe = new Dog('xiezhe',23);
+		xiezhe.bark();
+		//返回什么
+		function Pig(){
+			this.age = 99;
+			return 'abc';
+		}
+		var pig = new Pig()
+		console.log(pig)//对象因为函数作为构造函数运行时，return的值是忽略的
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
