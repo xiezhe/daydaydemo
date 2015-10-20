@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>分享功能</title>
+	<style type="text/css">
+		#div1{width: 100px;height: 150px;background:#f00;position:absolute;top: 100px;left:-100px;}
+		#div2{position: absolute;padding: 20px 10px;left:100px;top: 45px;background:#0f0;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			function move(id){
+				this.oDiv1 = document.getElementById(id);
+				this.timmer = null;
+				this.init();
+			}
+			move.prototype.init = function(){
+				var This = this;
+				this.oDiv1.onmouseover = function(){
+					This.change(0,10);
+				}
+				this.oDiv1.onmouseout = function(){
+					This.change(-100,-10);
+				}
+			}
+			move.prototype.change = function(iTarget,dic){
+				var This = this
+				clearInterval(This.timmer);
+				This.timmer = setInterval(function(){
+					if(This.oDiv1.offsetLeft==iTarget){
+						clearInterval(This.timmer)
+					}else{
+						This.oDiv1.style.left = This.oDiv1.offsetLeft+dic+"px"
+					}
+				},30)
+			}
+			var a = new move('div1')
+			/*var oDiv1 = document.getElementById('div1');
+			var oDiv2 = document.getElementById('div2');
+			var timmer = null;
+			oDiv1.onmouseover = function(){
+				move(0,10)
+			}
+			oDiv1.onmouseout = function(){
+				move(-100,-10)
+			}
+			function move(iTarget,dic){
+				clearInterval(timmer);
+				timmer = setInterval(function(){
+					if(oDiv1.offsetLeft==iTarget){
+						clearInterval(timmer)
+					}else{
+						oDiv1.style.left = oDiv1.offsetLeft+dic+"px"
+					}
+				},30)
+			}*/
+		}
+	</script>
+</head>
+<body>
+	<div id="div1">
+		<div id="div2">
+			分享
+		</div>
+	</div>
+</body>
+</html>
