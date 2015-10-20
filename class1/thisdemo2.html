@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>this</title>
+	<script type="text/javascript">
+		//2:作为对象的方法来调用this指向方法的调用者即该对象
+		var obj = {
+				xx:999,
+				yy:888,
+				t: function(){
+					alert(this.xx);
+				}
+			}
+		obj.t()//999
+		var dog = {xx:'wangwang'};
+		dog.t = obj.t;
+		dog.t();//wangwang
+		//作为方法调用时，this指向其调用那一刻的调用者，即母体对象
+		//不管被调用函数，生命是属于方法还是函数
+		show = function(){
+			alert('show'+this.xx);
+		}
+		dog.t = show;
+		dog.t();//show wangwang
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
