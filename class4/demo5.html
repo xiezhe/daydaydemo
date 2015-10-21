@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>demo1</title>
+    <script type="text/javascript" src="react-0.13.1/build/react.min.js"></script>
+    <script type="text/javascript" src="react-0.13.1/build/JSXTransformer.js"></script>
+
+</head>
+
+<body>
+    <script type="text/jsx">
+    	var style = {
+    		background:"#0f0",
+    		border : "1px solid #000"
+    	}
+        var HelloWorld = React.createClass({
+        	getName: function(){
+        		if(this.props.name)
+        			return this.props.name
+        		else
+        			return "world"
+        	},
+        	render:function(){
+        		return <p>Hello {this.props.name || "world"}</p>
+        	}
+        })
+        React.render(<div style={style}><HelloWorld name="xiezhe"></HelloWorld></div>,document.body)
+    </script>
+</body>
+</html>
