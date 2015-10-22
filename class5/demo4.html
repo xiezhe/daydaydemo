@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript">
+		function hello(){
+			return this.names = 'aaaa';
+		}
+		hello.prototype.names = 'bbb';
+		Object.prototype.names = 'cccc';
+		var world = new hello()
+		console.log(world.names)//aaaa
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

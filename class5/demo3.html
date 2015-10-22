@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo1</title>
+	<script type="text/javascript">
+		var str = 'hello';
+		str.number = 100;
+		console.log(str.number)//undefined
+		/*
+			因为在str.number时创建了包装对象String,String.number的number属性是10，但是创建后就消失了，而console的str是重新创建的不具备number属性
+		 */
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
