@@ -11,6 +11,45 @@
 
 ###面向对象的一些属性和方法
 
+* hasOwnProperty查看对象是否自身独有的属性 [例子](demo5.html)
+
+<pre>
+	var arr = [];
+	arr.num = 1;
+	Array.prototype.num2 = 2;
+	alert(arr.hasOwnProperty('num'))//true;
+
+</pre>
+
+*constructor:查看对象的构造函数
+** 每个对象都会自动添加constructor属性 
+** for in 时有些属性找不到
+** 避免修改constructor属性
+[例子](demo6.html)
+<pre>
+	function Aaa(){}
+	var a = new Aaa();
+	alert(a.constructor)//function Aaa(){}
+</pre>
+[例子](demo7.html)
+
+<pre>
+	//做数组的判断
+	var a = []
+	alert(a.constructor == Array)//true;
+</pre>
+> constructor改写
+
+	function Aaa(){}
+	//此时prototype被改写
+	Aaa.prototype = {
+		//修正constructor则解决了这个问题
+		constructor: Aaa,
+		name: '111'
+	};
+	var a1 = new Aaa();
+	alert(a1.constructor)//输出的是json对应的constructor
+
 - instanceof
 
 > 判断实例对象与构造函数在原型链上是否有关系
