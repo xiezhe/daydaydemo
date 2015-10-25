@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>面向对象的继承</title>
+	<script type="text/javascript">
+		function People(name,age){
+		    this.name = name;
+		    this.age = age;
+		}
+		People.prototype.say = function(){
+		    alert(this.age);
+		}
+		var p1 = new People('张三',20);
+		//p1.say();
+		function Student(name,age,classess){
+			//Prople(name,age)//但是此时People指向的是window
+			People.call(this,name,age);
+			this.classess = classess;
+		}
+		Student.prototype.study = function(){
+			alert('good good study')
+		}
+		//Student.prototype = People.prototype
+		//会影响父类因为是对象的引用
+		function extend(obj1,obj2){
+			for(var key in obj2){
+				obj1[key] = obj2[key]
+			}
+		}
+		extend(Student.prototype,People.prototype)
+		var s1 = new Student('李四',10,'5班');
+		//alert(s1.name);
+		s1.say()
+		s1.study()
+	</script>
+</head>
+<body>
+	
+</body>
+</html>

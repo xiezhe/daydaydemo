@@ -1,16 +1,18 @@
-#包装对象
+###包装对象
 
 ### 基本类型都有包装对象：String Number Bollean
 
 > 基本类型找到对应的包装对象类型，然后包装对象把所有的属性和方法都给了基本类型，然后包装对象消失。
 
-#原型链
-###实例对象和原型之间的链接叫原型链(\_proto\_)
+### 原型链
+### 实例对象和原型之间的链接叫原型链(\_proto\_)
 > Object对象类型是原型链的最外层（Obeject.prototype）
 [例子](demo4.html)
-#面向对象的一些属性和方法
+
+###面向对象的一些属性和方法
 
 - instanceof
+
 > 判断实例对象与构造函数在原型链上是否有关系
 <pre>
     function Aaa(){};
@@ -19,9 +21,11 @@
     console.log(a instanceof Object)//true;
     console.log(a instanceof Array)//false;
 </pre>
-#toString
+
+### toString
+
 - object的方法
-- 系统对象的toString都是自己的，自己写的对象都是通过原型链找到Object下的toString方法
+系统对象的toString都是自己的，自己写的对象都是通过原型链找到Object下的toString方法
 
 <pre>
 	function Aaa(){}
