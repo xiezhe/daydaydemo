@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<link rel="stylesheet" href="">
+	<style type="text/css">
+		#div1{width: 100px;height: 100px;background:#f00;position: absolute;}
+		#div2{width: 100px;height: 100px;background:#ff0;position: absolute;left:100px;}
+	</style>
+	<script type="text/javascript">
+		window.onload = function(){
+			var drag1 = new Drag('div1');
+			var drag2 = new Drag2('div2');
+			drag1.init();
+			drag2.init();
+		}
+		function Drag(id){
+			this.obj = document.getElementById(id);
+			this.disX = 0;
+			this.disY = 0;
+		}
+		Drag.prototype.init = function(){
+			var This = this;
+			this.obj.onmousedown = function(ev){
+				var oEvent =ev || event;
+				This.fnDown(oEvent);
+				document.onmousemove = function(ev){
+					var oEvent = ev || event;
+					This.fnMove(oEvent)
+				};
+				document.onmouseup = function(){
+					This.fnUp();
+				}
+				return false;
+			}
+		};
+		Drag.prototype.fnDown = function(ev){
+			//var This = this;
+			this.disY = ev.clientY - this.obj.offsetTop;
+			this.disX = ev.clientX - this.obj.offsetLeft
+		}
+		Drag.prototype.fnMove = function(ev){
+			this.obj.style.left = ev.clientX - this.disX+'px';
+			this.obj.style.top = ev.clientY - this.disY+'px';
+		}
+		Drag.prototype.fnUp = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+		function Drag2(id){
+			Drag.call(this,id);
+		}
+		function extend(obj1,obj2){
+			for(var key in obj2){
+				obj1[key] = obj2[key];
+			}
+		}
+		extend(Drag2.prototype,Drag.prototype);
+		Drag2.prototype.fnMove = function(ev){
+			var L = ev.clientX - this.disX;
+			var T = ev.clientY - this.disY;
+			if(L<0){
+				L=0;
+			}
+			if(L>document.documentElement.clientWidth - this.obj.offsetWidth){
+				L = document.documentElement.clientWidth - this.obj.offsetWidth
+			}
+			if(T<0){
+				T=0;
+			}
+			if(T>document.documentElement.clientHeight - this.obj.offsetHeight){
+				T = document.documentElement.clientHeight - this.obj.offsetHeight
+			}
+			this.obj.style.left = L+'px';
+			this.obj.style.top = T+'px';
+		}
+	</script>
+</head>
+<body>
+	<div id="div1"></div>
+	<div id="div2"></div>
+</body>
+</html>
