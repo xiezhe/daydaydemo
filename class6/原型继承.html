@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>原型继承</title>
+	<script type="text/javascript">
+		//类继承：借助原型来实现类继承
+		var a = {
+			name:'小明'
+		}
+		var b = cloneObj(a)
+
+		//b在下面写了name所以不去找a的name了；
+		b.name = '小花'
+		function cloneObj(obj){
+			var F = function(){}
+			F.prototype = obj;
+			return new F();
+		}
+		alert(b.name)
+		alert(a.name)
+		//拷贝继承：通用型，有new和无new都可以
+		//类式继承：通过new构造函数；
+		//原型继承 无new的对象例如：json
+	</script>
+</head>
+<body>
+	
+</body>
+</html>
