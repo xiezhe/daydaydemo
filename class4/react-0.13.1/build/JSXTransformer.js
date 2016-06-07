@@ -2746,7 +2746,7 @@ process.umask = function() { return 0; };
 
         // 'const' is specialized as Keyword in V8.
         // 'yield' is only treated as a keyword in strict mode.
-        // 'let' is for compatiblity with SpiderMonkey and ES.next.
+        // 'let' is for compatibility with SpiderMonkey and ES.next.
         // Some others are from future reserved words.
 
         switch (id.length) {
@@ -10763,7 +10763,7 @@ define(function (_dereq_, exports, module) {
   /**
    * Returns the original source content. The only argument is the url of the
    * original source file. Returns null if no original source content is
-   * availible.
+   * available.
    */
   SourceMapConsumer.prototype.sourceContentFor =
     function SourceMapConsumer_sourceContentFor(aSource) {
@@ -11158,7 +11158,7 @@ define(function (_dereq_, exports, module) {
         throw new Error('Invalid mapping: ' + JSON.stringify({
           generated: aGenerated,
           source: aSource,
-          orginal: aOriginal,
+          original: aOriginal,
           name: aName
         }));
       }
@@ -15040,7 +15040,7 @@ RESERVED_WORDS.forEach(function(k) {
 });
 
 /**
- * This list should not grow as new reserved words are introdued. This list is
+ * This list should not grow as new reserved words are introduced. This list is
  * of words that need to be quoted because ES3-ish browsers do not allow their
  * use as identifier names.
  */
